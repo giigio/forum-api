@@ -1,4 +1,3 @@
-import { Question } from '@/domain/forum/enterprise/entities/question'
 import { InMemoryQuestionsRepository } from './repositories/in-memory-questions-repository'
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug'
 import { makeQuestion } from './factories/make-question'
