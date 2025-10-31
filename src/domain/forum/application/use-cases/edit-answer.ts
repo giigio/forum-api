@@ -1,13 +1,13 @@
 import { Answer } from '../../enterprise/entities/answer'
 import { AnswersRepository } from '../repositories/answers-repository'
 
-interface editAnswerUseCaseRequest {
+interface EditAnswerUseCaseRequest {
   authorId: string
   answerId: string
   content: string
 }
 
-interface editAnswerUseCaseResponse {
+interface EditAnswerUseCaseResponse {
   answer: Answer
 }
 
@@ -18,7 +18,7 @@ export class EditAnswerUseCase {
     authorId,
     answerId,
     content,
-  }: editAnswerUseCaseRequest): Promise<editAnswerUseCaseResponse> {
+  }: EditAnswerUseCaseRequest): Promise<EditAnswerUseCaseResponse> {
     const answer = await this.answerRepository.findById(answerId)
 
     if (!answer) {

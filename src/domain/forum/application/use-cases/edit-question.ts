@@ -1,14 +1,14 @@
 import { Question } from '../../enterprise/entities/question'
 import { QuestionsRepository } from '../repositories/questions-repository'
 
-interface editQuestionUseCaseRequest {
+interface EditQuestionUseCaseRequest {
   authorId: string
   questionId: string
   title: string
   content: string
 }
 
-interface editQuestionUseCaseResponse {
+interface EditQuestionUseCaseResponse {
   question: Question
 }
 
@@ -20,7 +20,7 @@ export class EditQuestionUseCase {
     questionId,
     title,
     content,
-  }: editQuestionUseCaseRequest): Promise<editQuestionUseCaseResponse> {
+  }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
     const question = await this.questionRepository.findById(questionId)
 
     if (!question) {
