@@ -10,13 +10,13 @@ describe('Create Question Use Case', () => {
     sut = new CreateQuestionUseCase(inMemoryRepository)
   })
   it('should be able to create a question', async () => {
-    const { question } = await sut.execute({
+    const result = await sut.execute({
       authorId: 'author-1',
       title: 'How to learn TypeScript?',
       content: 'This is an question.',
     })
 
-    expect(question.id).toBeTruthy()
-    expect(inMemoryRepository.items[0].content).toEqual('This is an question.')
+    expect(result.isRight()).toBe(true)
+    expect(inMemoryRepository.items[0]).toEqual(result.value?.question)
   })
 })
