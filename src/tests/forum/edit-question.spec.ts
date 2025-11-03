@@ -1,11 +1,11 @@
-import { InMemoryQuestionsRepository } from './repositories/in-memory-questions-repository'
-import { makeQuestion } from './factories/make-question'
+import { InMemoryQuestionsRepository } from '../repositories/in-memory-questions-repository'
+import { makeQuestion } from '../factories/make-question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/edit-question'
 import { NotAllowedError } from '@/domain/forum/application/use-cases/errors/not-allowed-error'
 import { ResourceNotFoundError } from '@/domain/forum/application/use-cases/errors/resource-not-found-error'
-import { InMemoryQuestionAttachmentsRepository } from './repositories/in-memory-question-attachments-repository'
-import { makeQuestionAttachment } from './factories/make-question-attachment'
+import { InMemoryQuestionAttachmentsRepository } from '../repositories/in-memory-question-attachments-repository'
+import { makeQuestionAttachment } from '../factories/make-question-attachment'
 
 let inMemoryRepository: InMemoryQuestionsRepository
 let inMemoryAttachmentsRepository: InMemoryQuestionAttachmentsRepository

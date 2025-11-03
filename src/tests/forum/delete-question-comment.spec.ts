@@ -1,6 +1,6 @@
 import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/delete-question-comment'
-import { InMemoryQuestionCommentsRepository } from './repositories/in-memory-comment-on-question'
-import { makeQuestionComment } from './factories/make-question-comment'
+import { InMemoryQuestionCommentsRepository } from '../repositories/in-memory-comment-on-question'
+import { makeQuestionComment } from '../factories/make-question-comment'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { NotAllowedError } from '@/domain/forum/application/use-cases/errors/not-allowed-error'
 

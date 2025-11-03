@@ -1,7 +1,7 @@
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
-import { InMemoryQuestionsRepository } from './repositories/in-memory-questions-repository'
+import { InMemoryQuestionsRepository } from '../repositories/in-memory-questions-repository'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { InMemoryQuestionAttachmentsRepository } from './repositories/in-memory-question-attachments-repository'
+import { InMemoryQuestionAttachmentsRepository } from '../repositories/in-memory-question-attachments-repository'
 
 let inMemoryRepository: InMemoryQuestionsRepository
 let inMemoryAttachmentsRepository: InMemoryQuestionAttachmentsRepository

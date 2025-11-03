@@ -1,7 +1,7 @@
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
-import { InMemoryAnswersRepository } from './repositories/in-memory-answers-repository'
+import { InMemoryAnswersRepository } from '../repositories/in-memory-answers-repository'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { InMemoryAnswerAttachmentsRepository } from './repositories/in-memory-answer-attachment-repository'
+import { InMemoryAnswerAttachmentsRepository } from '../repositories/in-memory-answer-attachment-repository'
 
 let inMemoryAttachmentsRepository: InMemoryAnswerAttachmentsRepository
 let inMemoryRepository: InMemoryAnswersRepository
