@@ -1,13 +1,19 @@
 import { InMemoryQuestionsRepository } from './repositories/in-memory-questions-repository'
 import { makeQuestion } from './factories/make-question'
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetch-recent-questions'
+import { InMemoryQuestionAttachmentsRepository } from './repositories/in-memory-question-attachments-repository'
 
 let inMemoryRepository: InMemoryQuestionsRepository
+let inMemoryAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let sut: FetchRecentQuestionsUseCase
 
 describe('Fetch Recent Questions', () => {
   beforeEach(() => {
-    inMemoryRepository = new InMemoryQuestionsRepository()
+    inMemoryAttachmentsRepository = new InMemoryQuestionAttachmentsRepository()
+    inMemoryRepository = new InMemoryQuestionsRepository(
+      inMemoryAttachmentsRepository,
+    )
+
     sut = new FetchRecentQuestionsUseCase(inMemoryRepository)
   })
   it('should be able to fetch recent questions', async () => {

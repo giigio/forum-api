@@ -5,14 +5,19 @@ import { InMemoryAnswersRepository } from './repositories/in-memory-answers-repo
 import { InMemoryQuestionsRepository } from './repositories/in-memory-questions-repository'
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/choose-question-best-answer'
 import { NotAllowedError } from '@/domain/forum/application/use-cases/errors/not-allowed-error'
+import { InMemoryQuestionAttachmentsRepository } from './repositories/in-memory-question-attachments-repository'
 
 let inMemoryQuestionRepository: InMemoryQuestionsRepository
+let inMemoryAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryAnswerRepository: InMemoryAnswersRepository
 let sut: ChooseQuestionBestAnswerUseCase
 
 describe('Choose Question Best Answer Use Case', () => {
   beforeEach(() => {
-    inMemoryQuestionRepository = new InMemoryQuestionsRepository()
+    inMemoryAttachmentsRepository = new InMemoryQuestionAttachmentsRepository()
+    inMemoryQuestionRepository = new InMemoryQuestionsRepository(
+      inMemoryAttachmentsRepository,
+    )
     inMemoryAnswerRepository = new InMemoryAnswersRepository()
     sut = new ChooseQuestionBestAnswerUseCase(
       inMemoryAnswerRepository,
