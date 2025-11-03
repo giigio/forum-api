@@ -6,19 +6,25 @@ import { InMemoryQuestionsRepository } from './repositories/in-memory-questions-
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/choose-question-best-answer'
 import { NotAllowedError } from '@/domain/forum/application/use-cases/errors/not-allowed-error'
 import { InMemoryQuestionAttachmentsRepository } from './repositories/in-memory-question-attachments-repository'
+import { InMemoryAnswerAttachmentsRepository } from './repositories/in-memory-answer-attachment-repository'
 
 let inMemoryQuestionRepository: InMemoryQuestionsRepository
 let inMemoryAttachmentsRepository: InMemoryQuestionAttachmentsRepository
+let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
 let inMemoryAnswerRepository: InMemoryAnswersRepository
 let sut: ChooseQuestionBestAnswerUseCase
 
 describe('Choose Question Best Answer Use Case', () => {
   beforeEach(() => {
+    inMemoryAnswerAttachmentsRepository =
+      new InMemoryAnswerAttachmentsRepository()
     inMemoryAttachmentsRepository = new InMemoryQuestionAttachmentsRepository()
     inMemoryQuestionRepository = new InMemoryQuestionsRepository(
       inMemoryAttachmentsRepository,
     )
-    inMemoryAnswerRepository = new InMemoryAnswersRepository()
+    inMemoryAnswerRepository = new InMemoryAnswersRepository(
+      inMemoryAnswerAttachmentsRepository,
+    )
     sut = new ChooseQuestionBestAnswerUseCase(
       inMemoryAnswerRepository,
       inMemoryQuestionRepository,

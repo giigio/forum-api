@@ -2,13 +2,18 @@ import { FetchQuestionAnswersUseCase } from '@/domain/forum/application/use-case
 import { InMemoryAnswersRepository } from './repositories/in-memory-answers-repository'
 import { makeAnswer } from './factories/make-answer'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { InMemoryAnswerAttachmentsRepository } from './repositories/in-memory-answer-attachment-repository'
 
+let inMemoryAttachmentsRepository: InMemoryAnswerAttachmentsRepository
 let inMemoryRepository: InMemoryAnswersRepository
 let sut: FetchQuestionAnswersUseCase
 
 describe('Fetch Question Answers', () => {
   beforeEach(() => {
-    inMemoryRepository = new InMemoryAnswersRepository()
+    inMemoryAttachmentsRepository = new InMemoryAnswerAttachmentsRepository()
+    inMemoryRepository = new InMemoryAnswersRepository(
+      inMemoryAttachmentsRepository,
+    )
     sut = new FetchQuestionAnswersUseCase(inMemoryRepository)
   })
   it('should be able to fetch all question answers from a specific question', async () => {
